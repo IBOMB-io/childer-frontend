@@ -1,0 +1,30 @@
+<div class="bg-bg-cus bg-cover flex justify-center">
+    <form (ngSubmit)="login()" class="mt-5 grid grid-cols-6 w-917 justify-items-center">
+        <div class="bg-purple-cus w-293 h-589 p-24 rounded-l-xl col-span-2">
+            <img src="../../assets/Lovepik_com-401176518-cute-childrens-day-childrens-day 1.png" alt="">
+        </div>
+        <div class="bg-white w-625 h-589 p-32 rounded-r-xl col-span-4 grid grid-cols-2">
+            <h1 class="text-center text-3xl font-sarabun font-bold col-span-2">ลงชื่อเข้าใช้</h1>
+            <div class="col-span-2">
+                <label for="username" class="block text-sm font-medium text-gray-700">ชื่อผู้ใช้</label>
+                <input type="text" autocomplete="username" name="username"
+                    class="mt-1 block w-full rounded-md border-gray-300 bg-gray-300  shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+            </div>
+            <div class="col-span-2">
+                <label for="password" class="block text-sm font-medium text-gray-700">รหัสผ่าน</label>
+                <input type="text" autocomplete="username" name="password"
+                    class="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+            </div>
+            <div class="col-span-2 flex relative justify-between items-center">
+                <div>
+                    <input type="checkbox" name="" id=""> จดจำรหัสผ่าน
+                </div>
+                <button class="text-red-600">ลืมรหัสผ่าน?</button>
+            </div>
+            <button type="submit"
+                class="col-span-2 group relative flex w-full h-12 justify-center rounded-md border border-transparent bg-purple-cus py-3 px-4 text-sm font-medium text-white hover:bg-purple-cus focus:outline-none focus:ring-2 focus:ring-purple-cus focus:ring-offset-2">
+                Sign in
+            </button>
+        </div>
+    </form>
+</div>

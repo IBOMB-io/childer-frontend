@@ -1,0 +1,26 @@
+<div class="bg-white">
+    <div class="mx-auto max-w-2xl py-8 px-4 sm:py-8 sm:px-6 lg:max-w-7xl lg:px-8">
+
+        <h1 class="text-center text-xl">รายชื่อนักเรียนปีการศึกษา 2565</h1>
+
+        <div class="my-6 flex justify-center">
+            <select
+                class="inline-flex rounded-md border border-transparent w-52 bg-purple-cus px-4 py-2 text-sm text-center font-medium text-white shadow-sm hover:bg-purple-cus focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <option value="">ชั้นเด็กเล็กปีที่ 1</option>
+                <option value="">ชั้นเด็กเล็กปีที่ 2</option>
+                <option value="">ชั้นเด็กเล็กปีที่ 3</option>
+            </select>
+
+        </div>
+
+        <div class="grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-3 lg:grid-cols-6">
+            <a *ngFor="let child of children" href="#" class="group">
+                <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200">
+                    <img src="{{child.imagePath}}" class="h-full w-full object-cover object-center group-hover:opacity-75">
+                </div>
+                <h3 class="text-center mt-4 text-lg text-gray-700">{{child.fname +" "+ child.lname}}</h3>
+            </a>
+        </div>
+
+    </div>
+</div>
