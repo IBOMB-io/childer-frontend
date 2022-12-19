@@ -1,18 +1,18 @@
-<div class="bg-bg-cus bg-cover flex justify-center">
-    <form (ngSubmit)="login()" class="mt-5 grid grid-cols-6 w-917 justify-items-center">
-        <div class="bg-purple-cus w-293 h-589 p-24 rounded-l-xl col-span-2">
+<div class="bg-bg-cus bg-cover w-full h-screen flex justify-center">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" class="mt-5 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 lg:w-917 justify-items-center">
+        <div class="bg-purple-cus hidden rounded-l-xl lg:col-span-2 sm:flex items-end sm:col-span-1 sm:w-40 sm:h-96 lg:w-293 lg:h-589 lg:p-24">
             <img src="../../assets/Lovepik_com-401176518-cute-childrens-day-childrens-day 1.png" alt="">
         </div>
-        <div class="bg-white w-625 h-589 p-32 rounded-r-xl col-span-4 grid grid-cols-2">
+        <div class="bg-white rounded-r-xl w-80 p-10 h-96 grid sm:col-span-2 sm:grid-cols-1 sm:w-80 sm:h-96 sm:p-9 lg:col-span-4 lg:grid-cols-2 lg:w-625 lg:h-589 lg:p-32">
             <h1 class="text-center text-3xl font-sarabun font-bold col-span-2">ลงชื่อเข้าใช้</h1>
             <div class="col-span-2">
                 <label for="username" class="block text-sm font-medium text-gray-700">ชื่อผู้ใช้</label>
-                <input type="text" autocomplete="username" name="username"
+                <input type="text" autocomplete="username" required name="username" ngModel
                     class="mt-1 block w-full rounded-md border-gray-300 bg-gray-300  shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
             </div>
             <div class="col-span-2">
                 <label for="password" class="block text-sm font-medium text-gray-700">รหัสผ่าน</label>
-                <input type="text" autocomplete="username" name="password"
+                <input type="password" autocomplete="username" required name="password" ngModel
                     class="mt-1 block w-full rounded-md border-gray-300 bg-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
             </div>
             <div class="col-span-2 flex relative justify-between items-center">

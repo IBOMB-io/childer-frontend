@@ -1,7 +1,7 @@
-export class AddressModel {
-    houstNumber!: string;
-    moo!: string;
-    tambon!: string;
-    district!: string;
-    province!: string;
+export interface AddressModel {
+    houseNumber: string;
+    moo: string;
+    tambon: string;
+    district: string;
+    province: string;
 }

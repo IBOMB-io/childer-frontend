@@ -9,6 +9,8 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AddChildComponent } from './add-child/add-child.component';
 import { LoginformComponent } from './loginform/loginform.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChildrenNotFoundComponent } from './main-page/children-not-found/children-not-found.component';
+import { ChildProfileComponent } from './child-profile/child-profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     MainPageComponent,
     AddChildComponent,
-    LoginformComponent
+    LoginformComponent,
+    ChildrenNotFoundComponent,
+    ChildProfileComponent
   ],
   imports: [
     BrowserModule,

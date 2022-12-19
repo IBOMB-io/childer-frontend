@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MainPageService } from '../main-page/main-page.service';
-import { AddChildFormModel } from './add-child.model';
+import { AddChildService } from './add-child.service';
+import { ChildModel } from './child.model';
 
 
 @Component({
@@ -17,10 +19,73 @@ export class AddChildComponent implements OnInit {
   cardImageBase64!: string;
 
   formImageData: FormData = new FormData();
-  constructor(private service: HttpClient) {
+
+  constructor(private service: AddChildService, private router: Router) {
+  };
+
+  ngOnInit() { }
+
+  getAge(birthDate: Date): number {
+    birthDate = new Date(birthDate);
+    var today = new Date();
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
   }
 
-  ngOnInit() {
+  getGrade(birthDate: Date): string {
+    const age: number = this.getAge(birthDate);
+    
+    if (age == 3) {
+      return "1"
+    } else if (age == 4) {
+      return "2"
+    } else if (age >= 5) {
+      return "3"
+    }
+    return '';
+  }
+
+  postChild(data: any) {
+    const child: ChildModel = {
+      fname: data.fname,
+      lname: data.lname,
+      nickName: data.nickName,
+      ethnicity: data.ethnicity,
+      nationality: data.nationality,
+      idCard: data.idCard,
+      bod: data.bod,
+      parentName: data.parentName,
+      grade: this.getGrade(data.bod),
+      tel: data.tel,
+      address: {
+        houseNumber: data.houseNumber,
+        moo: data.moo,
+        tambon: data.tambon,
+        district: data.district,
+        province: data.province
+      },
+      imagePath: '',
+      book: {
+        schoolName: data.schoolName,
+        schoolLocation: data.schoolLocation,
+        affiliation: data.affiliation,
+        room: 0,
+        schoolYear: data.schoolYear
+      }
+    };
+
+
+    this.service.uploadImage(this.formImageData).subscribe(async (res) => {
+      child.imagePath = res;
+      await this.service.postChild(child).subscribe((res) => {
+        console.log(res);
+        this.router.navigate(['/main']);
+      });
+    });
   }
 
   fileChangeEvent(fileInput: any) {
@@ -72,15 +137,6 @@ export class AddChildComponent implements OnInit {
       reader.readAsDataURL(fileInput.target.files[0]);
     }
     return null;
-  }
-
-  postChild(data: AddChildFormModel) {
-
-    this.service.post("http://localhost:8080/image", this.formImageData, { responseType: "text" }).subscribe( async (res) => {
-      data.imagePath = res;
-      console.log(data);
-      await this.service.post("http://localhost:8080/children", data).subscribe((res) => console.log(res));
-    });
   }
 
 }
