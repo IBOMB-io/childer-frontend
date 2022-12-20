@@ -15,6 +15,8 @@ module.exports = {
       colors: {
         'purple-cus': '#6C3BF4',
         'gold-cus': '#E0BF6A',
+        'green-cus': '#8BC169',
+        'red-cus': '#C16969',
       },
       width: {
         '293': "293px",

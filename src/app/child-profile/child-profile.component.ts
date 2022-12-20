@@ -22,6 +22,9 @@ export class ChildProfileComponent implements OnInit {
   getById(id: number) {
     this.service.getChildById(id).subscribe((res: any) => {
       this.child = res;
+      this.child.bod = new Date(this.child.bod);
+      console.log(this.child);
+      
     });
   }
 

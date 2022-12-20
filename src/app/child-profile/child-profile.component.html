@@ -1,2 +1,36 @@
-<p>child-profile works!</p>
-{{child}}
+<div class="grid grid-cols-12">
+    <div class="bg-purple-cus col-span-3 h-auto w-96 p-8 grid gap-2 justify-items-center">
+        <img class="h-56" src="{{child.imagePath}}">
+        <div class="pt-3 text-slate-50 text-lg">
+            <h1 class="text-4xl">{{child.nickName}}</h1>
+            <h1 class="text-gold-cus">ชั้นเด็กเล็กปีที่ {{child.grade}}</h1>
+            <h1>{{child.fname +" "+child.lname}}</h1>
+            <h1>เลขประจำตัวประชาชน {{child.idCard}}</h1>
+            <h1>เกิดวันที่ {{child.bod.getDay()}}/{{child.bod.getMonth()}}/{{child.bod.getFullYear()}}</h1>
+            <h1>เชื้อชาติ {{child.ethnicity}} สัญชาติ {{child.nationality}}</h1>
+            <h1>ชื่อผู้ปกครอง {{child.parentName}}</h1>
+            <h1>ที่อยู่ {{child.address.houseNumber}} หมู่ {{child.address.moo}} ตำบล {{child.address.tambon}} อำเภอ
+                {{child.address.district}} จังหวัด {{child.address.province}}</h1>
+            <h1>โทรศัพท์ {{child.tel}}</h1>
+        </div>
+        <button
+            class="bg-white flex flex-col w-72 h-14 rounded-lg justify-center items-center text-lg">แก้ไขข้อมูล</button>
+    </div>
+    <div class="col-span-9">
+        <div class="grid grid-cols-8 gap-6 p-3 text-xl text-end">
+            <div class="col-span-4 bg-gray-400 rounded-tl-[80px] pt-60 p-4 h-72 w-auto">
+                <span class="">พัฒนาการด้านร่างกาย</span> 
+            </div>
+            <div class="col-span-4 bg-gray-400 rounded-tl-[80px] pt-60 p-4 h-72 w-auto">
+                <span class="">พัฒนาการด้านรอารมณ์และจิตใจ</span> 
+            </div>
+            <div class="col-span-4 bg-gray-400 rounded-tl-[80px] pt-60 p-4 h-72 w-auto">
+                <span class="">พัฒนาการด้านสังคม</span> 
+            </div>
+            <div class="col-span-4 bg-gray-400 rounded-tl-[80px] pt-60 p-4 h-72 w-auto">
+                <span class="">พัฒนาการด้านสติปัญญา</span> 
+            </div>
+        </div>
+
+    </div>
+</div>
