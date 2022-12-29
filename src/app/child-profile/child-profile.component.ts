@@ -11,6 +11,7 @@ import { ChildProfileService } from './child-profile.service';
 export class ChildProfileComponent implements OnInit {
 
   child!: ChildModel;
+  selected: boolean = true;
   constructor(private service: ChildProfileService, private route: ActivatedRoute) { };
 
   ngOnInit(): void {
@@ -24,8 +25,12 @@ export class ChildProfileComponent implements OnInit {
       this.child = res;
       this.child.bod = new Date(this.child.bod);
       console.log(this.child);
-      
+
     });
+  }
+
+  selectTab(t: boolean) {
+    this.selected = t;
   }
 
 }

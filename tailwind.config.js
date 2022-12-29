@@ -4,10 +4,6 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    borderWidth: {
-      '24': '24px',
-      '12': '12px',
-    },
     extend: {
       backgroundImage: {
         'bg-cus': "url(src/assets/bg.png)"
@@ -26,12 +22,15 @@ module.exports = {
       },
       height: {
         '589': "589px"
-      }
+      },
+      borderWidth: {
+        '24': '24px',
+        '12': '12px',
+      },
     },
     fontFamily: {
       'sarabun': ['sarabun']
     },
-
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),

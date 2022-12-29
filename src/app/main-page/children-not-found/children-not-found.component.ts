@@ -16,7 +16,6 @@ export class ChildrenNotFoundComponent implements OnInit {
     this.router.navigate(['/login']).then(() => {
       window.location.reload();
     });
-
   }
 
 }

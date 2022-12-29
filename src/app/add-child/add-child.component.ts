@@ -78,10 +78,9 @@ export class AddChildComponent implements OnInit {
       }
     };
 
-
     this.service.uploadImage(this.formImageData).subscribe(async (res) => {
       child.imagePath = res;
-      await this.service.postChild(child).subscribe((res) => {
+      this.service.postChild(child).subscribe((res) => {
         console.log(res);
         this.router.navigate(['/main']);
       });
