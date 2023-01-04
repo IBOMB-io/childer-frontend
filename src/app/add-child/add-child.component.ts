@@ -38,7 +38,7 @@ export class AddChildComponent implements OnInit {
 
   getGrade(birthDate: Date): string {
     const age: number = this.getAge(birthDate);
-    
+
     if (age == 3) {
       return "1"
     } else if (age == 4) {
@@ -78,13 +78,15 @@ export class AddChildComponent implements OnInit {
       }
     };
 
-    this.service.uploadImage(this.formImageData).subscribe(async (res) => {
-      child.imagePath = res;
-      this.service.postChild(child).subscribe((res) => {
-        console.log(res);
-        this.router.navigate(['/main']);
-      });
-    });
+    console.log(this.formImageData.get("image"));
+
+    // this.service.uploadImage(this.formImageData).subscribe(async (res) => {
+    //   child.imagePath = res;
+    //   this.service.postChild(child).subscribe((res) => {
+    //     console.log(res);
+    //     this.router.navigate(['/main']);
+    //   });
+    // });
   }
 
   fileChangeEvent(fileInput: any) {

@@ -7,7 +7,7 @@
                 <div class="img-space">
 
                     <ng-container *ngIf="isImageSaved; else elseTemplate">
-                        <img [src]="cardImageBase64"/>
+                        <img [src]="cardImageBase64" />
                     </ng-container>
                     <ng-template #elseTemplate>
                         <img src="../../assets/imageTemplate.png" class="img-responsive">
@@ -18,114 +18,114 @@
             </div>
         </fieldset>
     </div>
-    <div class="overflow-hidden shadow sm:rounded-md">
-        <div class="bg-white px-4 py-5 sm:p-6">
-            <div class="px-9 grid grid-cols-12 gap-9">
-                <div class="col-span-6 sm:col-span-4">
+    <div class="overflow-hidden shadow laptop:rounded-md">
+        <div class="bg-white px-4 py-5 laptop:p-6">
+            <div class="px-9 grid mobile:grid-cols-1 laptop:grid-cols-3 gap-9">
+                <div class="">
                     <label for="fname" class="block text-sm font-medium text-gray-700">ชื่อ</label>
                     <input type="text" autocomplete="given-name" ngModel name="fname"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-4">
+                <div class="">
                     <label for="lname" class="block text-sm font-medium text-gray-700">นามสกุล</label>
                     <input type="text" autocomplete="family-name" ngModel name="lname"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-4">
+                <div class="">
                     <label for="nickName" class="block text-sm font-medium text-gray-700">ชื่อเล่น</label>
                     <input type="text" autocomplete="nickname" ngModel name="nickName"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-4">
+                <div class="">
                     <label for="ethnicity" class="block text-sm font-medium text-gray-700">เชื้อชาติ</label>
                     <input type="text" autocomplete="on" ngModel name="ethnicity"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-4">
+                <div class="">
                     <label for="nationality" class="block text-sm font-medium text-gray-700">สัญชาติ</label>
                     <input type="text" autocomplete="on" ngModel name="nationality"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-4">
+                <div class="">
                     <label for="idCard" class="block text-sm font-medium text-gray-700">หมายเลขประจำตัวประชาชน</label>
                     <input type="text" autocomplete="on" ngModel name="idCard"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-2">
+                <div class="">
                     <label for="bod" class="block text-sm font-medium text-gray-700">วันเกิด</label>
                     <input type="date" autocomplete="bday-day" ngModel name="bod"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-4">
+                <div class="">
                     <label for="parentName" class="block text-sm font-medium text-gray-700">ชื่อผู้ปกครอง</label>
                     <input type="text" autocomplete="name" ngModel name="parentName"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-4">
+                <div class="">
                     <label for="tel" class="block text-sm font-medium text-gray-700">เบอร์โทรศัพท์มือถือ</label>
                     <input type="tel" autocomplete="tel" ngModel name="tel"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
 
-                <div class="col-span-6 sm:col-span-4">
+                <div class="">
                     <label for="schoolName" class="block text-sm font-medium text-gray-700">ชื่อโรงเรียน</label>
                     <input type="text" autocomplete="on" ngModel name="schoolName"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
-                <div class="col-span-6 sm:col-span-4">
+                <div class="">
                     <label for="schoolLocation" class="block text-sm font-medium text-gray-700">ที่อยู่</label>
                     <input type="text" autocomplete="on" ngModel name="schoolLocation"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
-                <div class="col-span-6 sm:col-span-2">
+                <div class="">
                     <label for="affiliation" class="block text-sm font-medium text-gray-700">สังกัด</label>
                     <input type="text" autocomplete="on" ngModel name="affiliation"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
-                <div class="col-span-6 sm:col-span-2">
+                <div class="">
                     <label for="schoolYear" class="block text-sm font-medium text-gray-700">ปีการศึกษา</label>
                     <input type="text" autocomplete="on" ngModel name="schoolYear"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-12"><label for="moo"
+                <div class="laptop:col-span-3"><label for="moo"
                         class="block text-sm font-medium text-gray-700">ที่อยู่ตามทะเบียนบ้าน</label></div>
-                <div class="col-span-6 sm:col-span-2">
+                <div class="">
                     <label for="houseNumber" class="block text-sm font-medium text-gray-700">บ้านเลขที่</label>
                     <input type="text" autocomplete="address-line1" ngModel name="houseNumber"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
-                <div class="col-span-6 sm:col-span-2">
+                <div class="">
                     <label for="moo" class="block text-sm font-medium text-gray-700">หมู่</label>
                     <input type="text" autocomplete="address-line2" ngModel name="moo"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-3">
+                <div class="">
                     <label for="tambon" class="block text-sm font-medium text-gray-700">ตำบล</label>
                     <input type="text" autocomplete="address-line3" ngModel name="tambon"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-3">
+                <div class="">
                     <label for="district" class="block text-sm font-medium text-gray-700">อำเภอ</label>
                     <input type="text" autocomplete="address-level1" ngModel name="district"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
                 </div>
 
-                <div class="col-span-6 sm:col-span-2">
+                <div class="">
                     <label for="province" class="block text-sm font-medium text-gray-700">จังหวัด</label>
                     <select autocomplete="country-name" ngModel name="province"
-                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-purple-cus focus:outline-none focus:ring-puborder-purple-cus sm:text-sm">
+                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-purple-cus focus:outline-none focus:ring-puborder-purple-cus laptop:text-sm">
                         <option>พะเยา</option>
                         <option>เชียงราย</option>
                         <option>เชียงใหม่</option>
@@ -134,7 +134,7 @@
 
             </div>
         </div>
-        <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+        <div class="bg-gray-50 px-4 py-3 text-right laptop:px-6">
             <button type="submit"
                 class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-puborder-purple-cus focus:ring-offset-2">Save</button>
         </div>

@@ -31,6 +31,12 @@ module.exports = {
     fontFamily: {
       'sarabun': ['sarabun']
     },
+    screens: {
+      'mobile': '320px',
+      'tablet': '481px',
+      'laptop': '769px',
+      'desktop': '1024px'
+    }
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),

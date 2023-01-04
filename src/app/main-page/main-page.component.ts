@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MainPage } from './main-page';
+import { IMainPage } from './main-page.model';
 import { MainPageService } from './main-page.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { MainPageService } from './main-page.service';
 })
 export class MainPageComponent implements OnInit {
 
-  children!: Array<MainPage>;
+  children!: Array<IMainPage>;
 
   constructor(private service: MainPageService,private router:Router) { }
 
@@ -28,13 +27,13 @@ export class MainPageComponent implements OnInit {
 
   childrenList() {
     this.service.getAllChildren().subscribe((response: any) => {
-      this.children = response.filter((child: MainPage) => child.grade == "1");
+      this.children = response.filter((child: IMainPage) => child.grade == "1");
     });
   }
 
   filterGrade(grade: any) {
     this.service.getAllChildren().subscribe((response: any) => {
-      this.children = response.filter((child: MainPage) => child.grade == grade.value);
+      this.children = response.filter((child: IMainPage) => child.grade == grade.value);
     });
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginModel } from './login.model';
+import { LoginForm } from './login-form.model';
 
 @Component({
   selector: 'app-loginform',
@@ -16,8 +17,8 @@ export class LoginformComponent implements OnInit {
 
   }
 
-  login(data: LoginModel) {
-    console.log(data);
+  login(data: any) {
+    const loginData: LoginForm = new LoginForm(data.username, data.password);
     localStorage.setItem("user", JSON.stringify(data));
     this.router.navigate(["/main"]).then(() => { window.location.reload() });
   }
