@@ -1,4 +1,4 @@
-<form #addChildForm="ngForm" (ngSubmit)="postChild(addChildForm.value)">
+<form (ngSubmit)="postChild()">
     <div class="form-group">
         <fieldset class="form-group">
             {{imageError}}
@@ -23,113 +23,131 @@
             <div class="px-9 grid mobile:grid-cols-1 laptop:grid-cols-3 gap-9">
                 <div class="">
                     <label for="fname" class="block text-sm font-medium text-gray-700">ชื่อ</label>
-                    <input type="text" autocomplete="given-name" ngModel name="fname"
+                    <input type="text" autocomplete="given-name" [formControl]="fnameForm" name="fname"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                    <span *ngIf="fnameForm.invalid && fnameForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="lname" class="block text-sm font-medium text-gray-700">นามสกุล</label>
-                    <input type="text" autocomplete="family-name" ngModel name="lname"
+                    <input type="text" autocomplete="family-name" [formControl]="lnameForm" name="lname"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="lnameForm.invalid && lnameForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="nickName" class="block text-sm font-medium text-gray-700">ชื่อเล่น</label>
-                    <input type="text" autocomplete="nickname" ngModel name="nickName"
+                    <input type="text" autocomplete="on" [formControl]="nickNameForm" name="nickName"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="nickNameForm.invalid && nickNameForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="ethnicity" class="block text-sm font-medium text-gray-700">เชื้อชาติ</label>
-                    <input type="text" autocomplete="on" ngModel name="ethnicity"
+                    <input type="text" autocomplete="on" [formControl]="ethnicityForm" name="ethnicity"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="ethnicityForm.invalid && ethnicityForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="nationality" class="block text-sm font-medium text-gray-700">สัญชาติ</label>
-                    <input type="text" autocomplete="on" ngModel name="nationality"
+                    <input type="text" autocomplete="on" [formControl]="nationalityForm" name="nationality"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="nationalityForm.invalid && nationalityForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="idCard" class="block text-sm font-medium text-gray-700">หมายเลขประจำตัวประชาชน</label>
-                    <input type="text" autocomplete="on" ngModel name="idCard"
+                    <input type="text" autocomplete="on" [formControl]="idCardForm" name="idCard"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="idCardForm.invalid && idCardForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="bod" class="block text-sm font-medium text-gray-700">วันเกิด</label>
-                    <input type="date" autocomplete="bday-day" ngModel name="bod"
+                    <input type="date" autocomplete="bday-day" [formControl]="bodForm" name="bod"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="bodForm.invalid && bodForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="parentName" class="block text-sm font-medium text-gray-700">ชื่อผู้ปกครอง</label>
-                    <input type="text" autocomplete="name" ngModel name="parentName"
+                    <input type="text" autocomplete="name" [formControl]="parentNameForm" name="parentName"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="parentNameForm.invalid && parentNameForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="tel" class="block text-sm font-medium text-gray-700">เบอร์โทรศัพท์มือถือ</label>
-                    <input type="tel" autocomplete="tel" ngModel name="tel"
+                    <input type="tel" autocomplete="tel" [formControl]="telForm" name="tel"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="telForm.invalid && telForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
 
                 <div class="">
                     <label for="schoolName" class="block text-sm font-medium text-gray-700">ชื่อโรงเรียน</label>
-                    <input type="text" autocomplete="on" ngModel name="schoolName"
+                    <input type="text" autocomplete="on" [formControl]="schoolNameForm" name="schoolName"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="schoolNameForm.invalid && schoolNameForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
                 <div class="">
                     <label for="schoolLocation" class="block text-sm font-medium text-gray-700">ที่อยู่</label>
-                    <input type="text" autocomplete="on" ngModel name="schoolLocation"
+                    <input type="text" autocomplete="on" [formControl]="schoolLocationForm" name="schoolLocation"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="schoolLocationForm.invalid && schoolLocationForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
                 <div class="">
                     <label for="affiliation" class="block text-sm font-medium text-gray-700">สังกัด</label>
-                    <input type="text" autocomplete="on" ngModel name="affiliation"
+                    <input type="text" autocomplete="on" [formControl]="affiliationForm" name="affiliation"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="affiliationForm.invalid && affiliationForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
                 <div class="">
                     <label for="schoolYear" class="block text-sm font-medium text-gray-700">ปีการศึกษา</label>
-                    <input type="text" autocomplete="on" ngModel name="schoolYear"
+                    <input type="text" autocomplete="on" [formControl]="schoolYearForm" name="schoolYear"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="schoolYearForm.invalid && schoolYearForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="laptop:col-span-3"><label for="moo"
                         class="block text-sm font-medium text-gray-700">ที่อยู่ตามทะเบียนบ้าน</label></div>
                 <div class="">
                     <label for="houseNumber" class="block text-sm font-medium text-gray-700">บ้านเลขที่</label>
-                    <input type="text" autocomplete="address-line1" ngModel name="houseNumber"
+                    <input type="text" autocomplete="address-line1" [formControl]="houseNumberForm" name="houseNumber"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="houseNumberForm.invalid && houseNumberForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
                 <div class="">
                     <label for="moo" class="block text-sm font-medium text-gray-700">หมู่</label>
-                    <input type="text" autocomplete="address-line2" ngModel name="moo"
+                    <input type="text" autocomplete="address-line2" [formControl]="mooForm" name="moo"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="mooForm.invalid && mooForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="tambon" class="block text-sm font-medium text-gray-700">ตำบล</label>
-                    <input type="text" autocomplete="address-line3" ngModel name="tambon"
+                    <input type="text" autocomplete="address-line3" [formControl]="tambonForm" name="tambon"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="tambonForm.invalid && tambonForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="district" class="block text-sm font-medium text-gray-700">อำเภอ</label>
-                    <input type="text" autocomplete="address-level1" ngModel name="district"
+                    <input type="text" autocomplete="address-level1" [formControl]="districtForm" name="district"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
+                        <span *ngIf="districtForm.invalid && districtForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
                 <div class="">
                     <label for="province" class="block text-sm font-medium text-gray-700">จังหวัด</label>
-                    <select autocomplete="country-name" ngModel name="province"
+                    <select autocomplete="country-name" [formControl]="provinceForm" name="province"
                         class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-purple-cus focus:outline-none focus:ring-puborder-purple-cus laptop:text-sm">
                         <option>พะเยา</option>
                         <option>เชียงราย</option>
                         <option>เชียงใหม่</option>
                     </select>
+                    <span *ngIf="provinceForm.invalid && provinceForm.touched" class="text-red-600 text-sm">กรุณากรอกข้อมูล</span>
                 </div>
 
             </div>

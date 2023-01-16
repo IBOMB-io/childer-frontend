@@ -11,6 +11,8 @@ import { LoginformComponent } from './loginform/loginform.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChildrenNotFoundComponent } from './main-page/children-not-found/children-not-found.component';
 import { ChildProfileComponent } from './child-profile/child-profile.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,14 +22,16 @@ import { ChildProfileComponent } from './child-profile/child-profile.component';
     AddChildComponent,
     LoginformComponent,
     ChildrenNotFoundComponent,
-    ChildProfileComponent
+    ChildProfileComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

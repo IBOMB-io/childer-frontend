@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MainPageService } from '../main-page/main-page.service';
 import { AddChildService } from './add-child.service';
-import { ChildModel } from './child.model';
+import { IChildModel } from './child.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,14 +13,35 @@ import { ChildModel } from './child.model';
 })
 export class AddChildComponent implements OnInit {
 
+  fnameForm: FormControl = new FormControl(null, Validators.required);
+  lnameForm: FormControl = new FormControl(null, Validators.required);
+  nickNameForm: FormControl = new FormControl(null, Validators.required);
+  ethnicityForm: FormControl = new FormControl(null, Validators.required);
+  nationalityForm: FormControl = new FormControl(null, Validators.required);
+  idCardForm: FormControl = new FormControl(null, Validators.required);
+  bodForm: FormControl = new FormControl(null, Validators.required);
+  parentNameForm: FormControl = new FormControl(null, Validators.required);
+  telForm: FormControl = new FormControl(null, Validators.required);
+
+  houseNumberForm: FormControl = new FormControl(null, Validators.required);
+  mooForm: FormControl = new FormControl(null, Validators.required);
+  tambonForm: FormControl = new FormControl(null, Validators.required);
+  districtForm: FormControl = new FormControl(null, Validators.required);
+  provinceForm: FormControl = new FormControl(null, Validators.required);
+
+  schoolNameForm: FormControl = new FormControl(null, Validators.required);
+  schoolLocationForm: FormControl = new FormControl(null, Validators.required);
+  affiliationForm: FormControl = new FormControl(null, Validators.required);
+  schoolYearForm: FormControl = new FormControl(null, Validators.required);
+
+
   imageError!: string;
   isImageSaved!: boolean;
   cardImageBase64!: string;
 
   formImageData: FormData = new FormData();
 
-  constructor(private service: AddChildService, private router: Router) {
-  };
+  constructor(private service: AddChildService, private router: Router, private toastr: ToastrService) { };
 
   ngOnInit() { }
 
@@ -49,44 +69,51 @@ export class AddChildComponent implements OnInit {
     return '';
   }
 
-  postChild(data: any) {
-    const child: ChildModel = {
-      fname: data.fname,
-      lname: data.lname,
-      nickName: data.nickName,
-      ethnicity: data.ethnicity,
-      nationality: data.nationality,
-      idCard: data.idCard,
-      bod: data.bod,
-      parentName: data.parentName,
-      grade: this.getGrade(data.bod),
-      tel: data.tel,
+  postChild() {
+    const child: IChildModel = {
+      fname: this.fnameForm.value,
+      lname: this.lnameForm.value,
+      nickName: this.nickNameForm.value,
+      ethnicity: this.ethnicityForm.value,
+      nationality: this.nationalityForm.value,
+      idCard: this.idCardForm.value,
+      bod: this.bodForm.value,
+      parentName: this.parentNameForm.value,
+      grade: this.getGrade(this.bodForm.value),
+      tel: this.telForm.value,
       address: {
-        houseNumber: data.houseNumber,
-        moo: data.moo,
-        tambon: data.tambon,
-        district: data.district,
-        province: data.province
+        houseNumber: this.houseNumberForm.value,
+        moo: this.mooForm.value,
+        tambon: this.tambonForm.value,
+        district: this.districtForm.value,
+        province: this.provinceForm.value
       },
       imagePath: '',
       book: {
-        schoolName: data.schoolName,
-        schoolLocation: data.schoolLocation,
-        affiliation: data.affiliation,
+        schoolName: this.schoolNameForm.value,
+        schoolLocation: this.schoolLocationForm.value,
+        affiliation: this.affiliationForm.value,
         room: 0,
-        schoolYear: data.schoolYear
+        schoolYear: this.schoolYearForm.value
       }
     };
 
-    console.log(this.formImageData.get("image"));
 
-    // this.service.uploadImage(this.formImageData).subscribe(async (res) => {
-    //   child.imagePath = res;
-    //   this.service.postChild(child).subscribe((res) => {
-    //     console.log(res);
-    //     this.router.navigate(['/main']);
-    //   });
-    // });
+    if (child.fname == null || child.lname == null || child.nickName == null || child.ethnicity == null || child.nationality == null || child.idCard == null || child.bod == null || child.parentName == null || child.grade == null || child.tel == null
+      || child.address.houseNumber == null || child.address.moo == null || child.address.tambon == null || child.address.district == null || child.address.province == null || child.book.schoolName == null || child.book.schoolLocation == null
+      || child.book.affiliation == null || child.book.room == null || child.book.schoolYear == null) {
+      console.log(child);
+      this.toastr.error("กรุณาตรวจสอบข้อมูลหรือกรอกช้อมูลให้ครบ", "ไม่สำเร็จ", { timeOut: 2000 });
+    } else {
+      this.toastr.success("ลงทะเบียนเด็กเรียบร้อย", 'สำเร็จ', { timeOut: 2000, });
+      // this.service.uploadImage(this.formImageData).subscribe(async (res) => {
+      //   child.imagePath = res;
+      //   this.service.postChild(child).subscribe((res) => {
+      //     console.log(res);
+      this.router.navigate(['/main']);
+      //   });
+      // });
+    }
   }
 
   fileChangeEvent(fileInput: any) {
@@ -128,7 +155,6 @@ export class AddChildComponent implements OnInit {
             this.cardImageBase64 = imgBase64Path;
             this.isImageSaved = true;
             this.formImageData.append("image", fileInput.target.files[0], fileInput.target.files[0].name);
-            //console.log(this.formImageData.get("image"));
 
             return fileInput.target.files[0];
           }

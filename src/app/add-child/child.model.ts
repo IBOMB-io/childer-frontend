@@ -1,7 +1,7 @@
-import { AddressModel } from "./address.model";
-import { Book } from "./book.model";
+import { IAddressModel } from "./address.model";
+import { IBook } from "./book.model";
 
-export interface ChildModel {
+export interface IChildModel {
     imagePath: string;
     fname: string;
     lname: string;
@@ -13,6 +13,6 @@ export interface ChildModel {
     parentName: string;
     grade: string;
     tel: string;
-    address: AddressModel;
-    book: Book;
+    address: IAddressModel;
+    book: IBook;
 }

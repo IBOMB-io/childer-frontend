@@ -1,4 +1,4 @@
-export interface Book {
+export interface IBook {
     schoolName: string;
     schoolLocation: string;
     affiliation: string;

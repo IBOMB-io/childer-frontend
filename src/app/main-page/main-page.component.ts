@@ -10,9 +10,9 @@ import { MainPageService } from './main-page.service';
 })
 export class MainPageComponent implements OnInit {
 
-  children!: Array<IMainPage>;
+  children!: IMainPage[];
 
-  constructor(private service: MainPageService,private router:Router) { }
+  constructor(private service: MainPageService, private router: Router) { }
 
   gradeList: string[] = [
     "1", "2", "3"
@@ -37,7 +37,7 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  navigateProfile(id:number) {
+  navigateProfile(id: number) {
     this.router.navigate([`profile/${id}`]);
   }
 

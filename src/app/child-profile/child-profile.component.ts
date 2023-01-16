@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ChildModel } from '../add-child/child.model';
+import { IChildModel } from '../add-child/child.model';
 import { ChildProfileService } from './child-profile.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ChildProfileService } from './child-profile.service';
 })
 export class ChildProfileComponent implements OnInit {
 
-  child!: ChildModel;
+  child!: IChildModel;
   selected: boolean = true;
   constructor(private service: ChildProfileService, private route: ActivatedRoute) { };
 

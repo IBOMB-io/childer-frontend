@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavbarService } from './navbar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   hid: boolean = true;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private service: NavbarService) {
 
   }
 
@@ -22,6 +23,7 @@ export class NavbarComponent implements OnInit {
 
 
   logOut() {
+    this.logOut()
     localStorage.clear();
     this.router.navigate(['/login']).then(() => {
       window.location.reload();

@@ -6,6 +6,7 @@ import { LoginformComponent } from './loginform/loginform.component';
 import { MainPageComponent } from './main-page/main-page.component';
 
 const routes: Routes = [
+  { path: '',pathMatch: 'full', redirectTo: localStorage.getItem("user") ? "main" : "login" },
   { path: 'main', component: MainPageComponent, runGuardsAndResolvers: 'always' },
   { path: 'add-child', component: AddChildComponent },
   { path: 'login', component: LoginformComponent, runGuardsAndResolvers: 'always' },

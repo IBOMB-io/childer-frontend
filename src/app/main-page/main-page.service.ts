@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { IMainPage } from './main-page.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class MainPageService {
   constructor(private httpClient: HttpClient) { }
 
   getAllChildren() {
-    return this.httpClient.get(this.url);
+    return this.httpClient.get<IMainPage[]>(this.url);
   }
 
 }
