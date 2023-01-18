@@ -1,0 +1,3 @@
+.bts {
+    @apply inline-flex justify-center w-2/3 rounded-md border border-l-purple-cus bg-purple-cus px-4 py-2 text-lg font-medium text-white shadow-lg hover:bg-purple-900;
+}

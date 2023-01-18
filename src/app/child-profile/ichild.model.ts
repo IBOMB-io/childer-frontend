@@ -1,7 +1,9 @@
-import { IAddressModel } from "./address.model";
-import { IBook } from "./book.model";
+import { IAddressModel } from "../add-child/address.model";
+import { IBook } from "../add-child/book.model";
 
-export interface IChildModel {
+export interface IChild {
+    id:number;
+    image: string;
     fname: string;
     lname: string;
     nickName: string;
@@ -9,6 +11,7 @@ export interface IChildModel {
     nationality: string;
     idCard: string;
     bod: Date;
+    grade:string;
     parentName: string;
     tel: string;
     address: IAddressModel;

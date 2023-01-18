@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IChild } from './ichild.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class ChildProfileService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getChildById(id: number) {
-    return this.httpClient.get(`${this.url}/${id}`);
+  getChildById(id: number) : Observable<IChild> {
+    return this.httpClient.get<IChild>(`${this.url}/${id}`);
   }
 }

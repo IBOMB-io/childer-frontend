@@ -34,40 +34,15 @@ export class AddChildComponent implements OnInit {
   affiliationForm: FormControl = new FormControl(null, Validators.required);
   schoolYearForm: FormControl = new FormControl(null, Validators.required);
 
-
   imageError!: string;
   isImageSaved!: boolean;
   cardImageBase64!: string;
 
-  formImageData: FormData = new FormData();
+  formData: FormData = new FormData();
 
   constructor(private service: AddChildService, private router: Router, private toastr: ToastrService) { };
 
   ngOnInit() { }
-
-  getAge(birthDate: Date): number {
-    birthDate = new Date(birthDate);
-    var today = new Date();
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    return age;
-  }
-
-  getGrade(birthDate: Date): string {
-    const age: number = this.getAge(birthDate);
-
-    if (age == 3) {
-      return "1"
-    } else if (age == 4) {
-      return "2"
-    } else if (age >= 5) {
-      return "3"
-    }
-    return '';
-  }
 
   postChild() {
     const child: IChildModel = {
@@ -79,7 +54,6 @@ export class AddChildComponent implements OnInit {
       idCard: this.idCardForm.value,
       bod: this.bodForm.value,
       parentName: this.parentNameForm.value,
-      grade: this.getGrade(this.bodForm.value),
       tel: this.telForm.value,
       address: {
         houseNumber: this.houseNumberForm.value,
@@ -88,31 +62,27 @@ export class AddChildComponent implements OnInit {
         district: this.districtForm.value,
         province: this.provinceForm.value
       },
-      imagePath: '',
       book: {
         schoolName: this.schoolNameForm.value,
         schoolLocation: this.schoolLocationForm.value,
         affiliation: this.affiliationForm.value,
-        room: 0,
         schoolYear: this.schoolYearForm.value
       }
     };
 
 
-    if (child.fname == null || child.lname == null || child.nickName == null || child.ethnicity == null || child.nationality == null || child.idCard == null || child.bod == null || child.parentName == null || child.grade == null || child.tel == null
+    if (child.fname == null || child.lname == null || child.nickName == null || child.ethnicity == null || child.nationality == null || child.idCard == null || child.bod == null || child.parentName == null || child.tel == null
       || child.address.houseNumber == null || child.address.moo == null || child.address.tambon == null || child.address.district == null || child.address.province == null || child.book.schoolName == null || child.book.schoolLocation == null
-      || child.book.affiliation == null || child.book.room == null || child.book.schoolYear == null) {
+      || child.book.affiliation == null || child.book.schoolYear == null) {
       console.log(child);
       this.toastr.error("กรุณาตรวจสอบข้อมูลหรือกรอกช้อมูลให้ครบ", "ไม่สำเร็จ", { timeOut: 2000 });
     } else {
-      this.toastr.success("ลงทะเบียนเด็กเรียบร้อย", 'สำเร็จ', { timeOut: 2000, });
-      // this.service.uploadImage(this.formImageData).subscribe(async (res) => {
-      //   child.imagePath = res;
-      //   this.service.postChild(child).subscribe((res) => {
-      //     console.log(res);
-      this.router.navigate(['/main']);
-      //   });
-      // });
+      this.formData.append("child", JSON.stringify(child));
+      this.service.postChild(this.formData).subscribe((res) => {
+        console.log(res);
+        this.toastr.success("ลงทะเบียนเด็กเรียบร้อย", 'สำเร็จ', { timeOut: 2000, });
+        this.router.navigate(['/main']);
+      });
     }
   }
 
@@ -131,16 +101,17 @@ export class AddChildComponent implements OnInit {
         return false;
       }
 
+      this.formData.set("image", fileInput.target.files[0], fileInput.target.files[0].name);
+
       const reader = new FileReader();
       reader.onload = (e: any) => {
         const image = new Image();
         image.src = e.target.result;
+
         image.onload = rs => {
           const img_height = 226;
           const img_width = 226;
-
           console.log(img_height, img_width);
-
 
           if (img_height > max_height && img_width > max_width) {
             this.imageError =
@@ -154,13 +125,10 @@ export class AddChildComponent implements OnInit {
             const imgBase64Path = e.target.result;
             this.cardImageBase64 = imgBase64Path;
             this.isImageSaved = true;
-            this.formImageData.append("image", fileInput.target.files[0], fileInput.target.files[0].name);
-
             return fileInput.target.files[0];
           }
         };
       };
-
       reader.readAsDataURL(fileInput.target.files[0]);
     }
     return null;

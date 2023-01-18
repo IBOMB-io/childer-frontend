@@ -23,10 +23,11 @@ export class NavbarComponent implements OnInit {
 
 
   logOut() {
-    this.logOut()
-    localStorage.clear();
-    this.router.navigate(['/login']).then(() => {
-      window.location.reload();
+    this.service.signOut().subscribe((res) => {
+      localStorage.clear();
+      this.router.navigate(['/login']).then(() => {
+        window.location.reload();
+      });
     });
 
   }

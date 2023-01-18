@@ -1,0 +1,33 @@
+<div class="flex flex-col bg-purple-cus items-center p-8 gap-5">
+    <div>
+        <img class="h-56 w-56" [src]="child.image ? child.image : '../../assets/imageTemplate.png' " alt="" srcset="">
+    </div>
+    <div class="text-white text-lg">
+        <p class="text-4xl">
+            {{child.nickName}}
+        </p>
+        <p class="text-gold-cus">
+            ชั้นเด็กเล็กปีที่ {{child.grade}}
+        </p>
+        {{child.fname}} {{child.lname}}
+        <p>
+            {{dateToStr(child.bod)}}
+        </p>
+        <p>
+            เลขประจำตัวประชาชน {{child.idCard}}
+        </p>
+        <p>
+            เชื้อชาติ {{child.ethnicity}}
+            สัญชาติ {{child.nationality}}
+        </p>
+        <p>
+            ที่อยู่ {{child.address.houseNumber}} หมู่{{child.address.moo}} ตำบล{{child.address.tambon}}
+            อำเภอ{{child.address.district}} จังหวัด{{child.address.province}}
+        </p>
+        <p>
+            โทรศัพท์ {{child.tel}}
+        </p>
+    </div>
+    <button
+        class="inline-flex justify-center w-2/3 rounded-md border border-gray-200 bg-white px-4 py-2 text-lg font-medium text-black shadow-lg hover:bg-gray-100">แก้ไขข้อมูล</button>
+</div>

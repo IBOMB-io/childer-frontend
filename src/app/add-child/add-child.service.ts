@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IChildModel } from './child.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +10,8 @@ export class AddChildService {
 
   constructor(private httpClient: HttpClient) { }
 
-  postChild(child: IChildModel) {
+  postChild(child: FormData) {
     return this.httpClient.post(this.url, child);
   }
 
-  uploadImage(image: FormData) {
-    return this.httpClient.post("http://localhost:8080/image", image, { responseType: "text" });
-  }
 }

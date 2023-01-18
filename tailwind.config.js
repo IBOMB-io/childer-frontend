@@ -27,6 +27,9 @@ module.exports = {
         '24': '24px',
         '12': '12px',
       },
+      padding: {
+        '18': "75.9px"
+      }
     },
     fontFamily: {
       'sarabun': ['sarabun']

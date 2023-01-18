@@ -1,6 +1,6 @@
 export interface IMainPage {
     id: number;
-    imagePath: string;
+    image: string;
     fname: string;
     lname: string
     grade: string;

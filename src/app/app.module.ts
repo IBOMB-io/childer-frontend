@@ -13,7 +13,11 @@ import { ChildrenNotFoundComponent } from './main-page/children-not-found/childr
 import { ChildProfileComponent } from './child-profile/child-profile.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { DetailComponent } from './child-profile/detail/detail.component';
+import { OverviewComponent } from './child-profile/overview/overview.component';
+import { EstimateComponent } from './child-profile/estimate/estimate.component';
+import { EvaluationComponent } from './child-profile/evaluation/evaluation.component';
+import { TabViewModule } from 'primeng/tabview';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +27,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginformComponent,
     ChildrenNotFoundComponent,
     ChildProfileComponent,
+    DetailComponent,
+    OverviewComponent,
+    EstimateComponent,
+    EvaluationComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +39,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    TabViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

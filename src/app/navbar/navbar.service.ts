@@ -11,6 +11,6 @@ export class NavbarService {
   constructor(private httpClinet: HttpClient) { }
 
   signOut() {
-    return this.httpClinet.post(this.url, { responseType: 'text' });
+    return this.httpClinet.post(`${this.url}/signout`, { responseType: 'text' });
   }
 }

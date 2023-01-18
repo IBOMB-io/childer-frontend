@@ -3,5 +3,4 @@ export interface IBook {
     schoolLocation: string;
     affiliation: string;
     schoolYear: number;
-    room: number;
 }
