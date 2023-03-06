@@ -21,7 +21,8 @@ module.exports = {
         '917': "917px",
       },
       height: {
-        '589': "589px"
+        '589': "589px",
+        '500': "500px"
       },
       borderWidth: {
         '24': '24px',
@@ -43,6 +44,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/forms')
+    require('@tailwindcss/forms'),
+    require('tailwind-scrollbar-hide')
   ],
 }

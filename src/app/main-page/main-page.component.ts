@@ -11,6 +11,7 @@ import { MainPageService } from './main-page.service';
 export class MainPageComponent implements OnInit {
 
   children!: IMainPage[];
+  childrenFIl: IMainPage[] = [];
 
   constructor(private service: MainPageService, private router: Router) { }
 
@@ -27,18 +28,17 @@ export class MainPageComponent implements OnInit {
 
   childrenList() {
     this.service.getAllChildren().subscribe((response: any) => {
-      this.children = response.filter((child: IMainPage) => child.grade == "1");
+      this.children = response;
+      this.childrenFIl = response.filter((child: IMainPage) => child.grade == "1");
     });
   }
 
   filterGrade(grade: any) {
-    this.service.getAllChildren().subscribe((response: any) => {
-      this.children = response.filter((child: IMainPage) => child.grade == grade.value);
-    });
+    this.childrenFIl = this.children.filter((child: IMainPage) => child.grade == grade.value);
   }
 
-  navigateProfile(id: number) {
-    this.router.navigate([`profile/${id}`]);
+  navigateProfile(id: number, grade: string) {
+    this.router.navigate([`profile/${grade}/${id}`]);
   }
 
 }

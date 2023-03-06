@@ -1,3 +1,11 @@
-.bts {
-    @apply inline-flex justify-center w-2/3 rounded-md border border-l-purple-cus bg-purple-cus px-4 py-2 text-lg font-medium text-white shadow-lg hover:bg-purple-900;
-}
+/* @tailwind components;
+
+@layer components {
+    button {
+        @apply inline-flex justify-center w-2/12 rounded-md border border-l-purple-cus bg-purple-cus px-4 py-2 text-base font-medium text-white shadow-lg;
+    }
+
+    input {
+        @apply mt-1 block w-auto rounded-md border-gray-300 shadow-sm;
+    }
+}; */

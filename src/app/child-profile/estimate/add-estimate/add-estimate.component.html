@@ -1,0 +1,42 @@
+<div class="flex flex-col gap-5">
+    <div class="flex justify-between">
+        <h2 class="text-lg font-semibold">เพิ่มแบบประเมินหลังการสอน</h2>
+        <div class="flex gap-2">
+            <button
+                class="inline-flex w-24 justify-center rounded-md border bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-green-700"
+                type="submit" (click)="addForm()">add</button>
+        </div>
+    </div>
+    <div class="overflow-y-scroll scrollbar-hide" [formGroup]="FormGroup">
+        <div formArrayName="ess">
+            <div class="flex justify-between pb-2 gap-2" *ngFor="let row of ess.controls; let i=index"
+                [formGroupName]="i">
+                <input class="block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus"
+                    placeholder="หน่วยการเรียนรู้" type="text" formControlName="title">
+                <input class="block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus"
+                    placeholder="จุดประสงค์การเรียนรู้" type="text" formControlName="objective">
+                <select class="block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus" type="text"
+                    formControlName="field">
+                    <option value="" disabled selected>ด้าน</option>
+                    <option *ngFor="let d of ['ร่างกาย','อารมณ์ จิตใจ','สังคม','สติปัญญา']" [value]="d">{{d}}</option>
+                </select>
+                <select class="block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-cus"
+                    formControlName="week">
+                    <option value="" disabled>เลือกสัปดาห์</option>
+                    <option *ngFor="let i of [1,2,3,4,5]" [value]="'สัปดาห์ที่ '+i">สัปดาห์ที่ {{i}}</option>
+                </select>
+                <button
+                    class="inline-flex w-auto justify-center rounded-md border bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-red-700"
+                    type="submit" (click)="deleteForm(i)">ลบ</button>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-end mt-2 gap-2">
+        <button
+            class="inline-flex justify-center rounded-md border bg-purple-cus px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-purple-900"
+            type="submit" (click)="save(FormGroup.value)">บันทึก</button>
+        <button
+            class="inline-flex justify-center rounded-md border bg-purple-cus px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-purple-900"
+            type="submit" (click)="setState()">ยกเลิก</button>
+    </div>
+</div>

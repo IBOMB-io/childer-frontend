@@ -10,7 +10,7 @@ import { ChildProfileService } from './child-profile.service';
 export class ChildProfileComponent implements OnInit {
 
   selected: boolean = true;
-  constructor(private service: ChildProfileService, private route: ActivatedRoute) { };
+  constructor() { };
 
   ngOnInit(): void {
 
@@ -20,4 +20,7 @@ export class ChildProfileComponent implements OnInit {
     this.selected = t;
   }
 
+  reloadeCompo() {
+    window.location.reload();
+  }
 }

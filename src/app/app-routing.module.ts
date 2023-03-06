@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'main', component: MainPageComponent, runGuardsAndResolvers: 'always' },
   { path: 'add-child', component: AddChildComponent },
   { path: 'login', component: LoginformComponent, runGuardsAndResolvers: 'always' },
-  { path: 'profile/:id', component: ChildProfileComponent }
+  { path: 'profile/:grade/:id', component: ChildProfileComponent }
 ];
 
 @NgModule({

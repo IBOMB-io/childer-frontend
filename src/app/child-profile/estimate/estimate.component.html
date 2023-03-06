@@ -1,25 +1,61 @@
-<div class="w-auto flex flex-col gap-2">
-    <div class="flex flex-row pb-5 w-auto justify-between">
-        <div class="col-span-1">
-            <b class="text-black">จุดประสงค์การเรียนรู้</b>
-        </div>
-        <div class="">
-            <div class="flex justify-center">
-                <select
-                    class="inline-flex rounded-md border border-transparent w-52 bg-purple-cus px-4 py-2 text-sm text-center font-medium text-white shadow-sm hover:bg-purple-cus focus:outline-none focus:ring-2 focus:ring-purple-cus focus:ring-offset-2">
-                    <option class="bg-purple-cus">สัปดาห์ที่ 1</option>
+<div>
+    <div *ngIf="!state else add">
+        <app-add-estimate (stateEvent)="receiveState($event)"></app-add-estimate>
+    </div>
+    <ng-template #add>
+        <div class="flex flex-col gap-5">
+            <div class="flex justify-between gap-2">
+                <span class="text-lg font-semibold">{{assessmentFormFil[0].title}}</span>
+            </div>
+            <div class="flex flex-row justify-between items-center">
+                <span>จุดประสงค์การเรียนรู้</span>
+                <select class="border border-purple-cus rounded-md ring-transparent shadow-sm"
+                    (change)="filterTitle($event.target)">
+                    <option [value]="title" *ngFor="let title of weekList">{{title}}</option>
                 </select>
             </div>
+            <div class="grid gap-2 overflow-y-scroll scrollbar-hide h-[350px] p-px" [formGroup]="formGroup">
+                <div *ngIf="emotional.controls.length != 0" class="flex flex-col gap-2" formArrayName="emotional">
+                    <div class="flex flex-row justify-between items-center"
+                        *ngFor="let row of emotional.controls; let i=index" [formGroupName]="i">
+                        <input class="block border-white w-full focus:border-white" type="text" formControlName="title">
+                        <input class="block w-auto rounded-md border-gray-300 shadow-sm focus:border-purple-cus"
+                            type="text" formControlName="score">
+                    </div>
+                </div>
+                <div *ngIf="society.controls.length != 0" class="flex flex-col gap-2" formArrayName="society">
+                    <div class="flex flex-row justify-between items-center"
+                        *ngFor="let row of society.controls; let i=index" [formGroupName]="i">
+                        <input class="block border-white w-full focus:border-white" type="text" formControlName="title">
+                        <input class="block w-auto rounded-md border-gray-300 shadow-sm focus:border-purple-cus"
+                            type="text" formControlName="score">
+                    </div>
+                </div>
+                <div *ngIf="brain.controls.length != 0" class="flex flex-col gap-2" formArrayName="brain">
+                    <div class="flex flex-row justify-between items-center"
+                        *ngFor="let row of brain.controls; let i=index" [formGroupName]="i">
+                        <input class="block border-white w-full focus:border-white" type="text" formControlName="title">
+                        <input class="block w-auto rounded-md border-gray-300 shadow-sm focus:border-purple-cus"
+                            type="text" formControlName="score">
+                    </div>
+                </div>
+                <div *ngIf="body.controls.length != 0" class="flex flex-col gap-2" formArrayName="body">
+                    <div class="flex flex-row justify-between items-center"
+                        *ngFor="let row of body.controls; let i=index" [formGroupName]="i">
+                        <input class="block border-white w-full focus:border-white" type="text" formControlName="title">
+                        <input class="block w-auto rounded-md border-gray-300 shadow-sm focus:border-purple-cus"
+                            type="text" formControlName="score">
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end gap-2">
+                <button
+                    class="inline-flex justify-center rounded-md border bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-green-700"
+                    type="submit" (click)="state=false">เพิ่ม</button>
+                <button
+                    class="inline-flex justify-center rounded-md border bg-purple-cus px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-purple-900"
+                    (click)="save(formGroup.value)" type="submit">บันทึก</button>
+            </div>
         </div>
-    </div>
-    <div class="flex flex-row justify-between items-center gap-2 w-auto">
-        <div>
-            <p>ทำความสะอาดร่างกายหลังการเล่นได้ 1.2.4</p>
-        </div>
-        <div>
-            <input type="text"
-                class="mt-1 block w-auto rounded-md border-gray-300 shadow-sm focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-sm">
-        </div>
-    </div>
-    <!-- <button class="bts">แก้ไขข้อมูล</button> -->
+    </ng-template>
 </div>

@@ -1,14 +1,92 @@
-<div class="grid grid-cols-2 gap-2 text-xl">
-    <div class="block h-52 p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100">
-        พัฒนาการด้านร่างกาย
+<div class="grid grid-cols-1 overflow-y-auto scrollbar-hide p-px h-500">
+    <div *ngIf="selectedPage == undefined else page" class="grid grid-cols-2 gap-2 text-xl">
+        <div (click)="selectPage('ร่างกาย')" class="block h-52 p-6 border border-gray-200 rounded-lg shadow-md"
+            [ngClass]="body>0 ? bodyColor : 'bg-white hover:bg-gray-100'">
+            พัฒนาการด้านร่างกาย
+        </div>
+        <div (click)="selectPage('อารมณ์ จิตใจ')" class="block h-52 p-6 border border-gray-200 rounded-lg shadow-md"
+            [ngClass]="emotional>0 ? emotionalColor : 'bg-white hover:bg-gray-100'">
+            พัฒนาการอารมณ์และจิตใจ
+        </div>
+        <div (click)="selectPage('สังคม')" class="block h-52 p-6 border border-gray-200 rounded-lg shadow-md"
+            [ngClass]="society>0 ? societyColor : 'bg-white hover:bg-gray-100'">
+            พัฒนาการด้านสังคม
+        </div>
+        <div (click)="selectPage('สติปัญญา')" class="block h-52 p-6 border border-gray-200 rounded-lg shadow-md"
+            [ngClass]="brain>0 ? brainColor : 'bg-white hover:bg-gray-100'">
+            พัฒนาการด้านสติปัญญา
+        </div>
     </div>
-    <div class="block h-52 p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100">
-        พัฒนาการอารมณ์และจิตใจ
-    </div>
-    <div class="block h-52 p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100">
-        พัฒนาการด้านสังคม
-    </div>
-    <div class="block h-52 p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100">
-        พัฒนาการด้านสติปัญญา
+    <div>
+        <ng-template #page>
+            <div class="flex justify-between">
+                <p class="text-xl pb-4">
+                    พัฒนาการด้าน{{dataFilter[0].developmentTopic}}
+                </p>
+                <button
+                    class="inline-flex justify-center h-fit rounded-md border bg-purple-cus px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-purple-900"
+                    (click)="selectedPage = undefined" type="submit">กลับ</button>
+            </div>
+            <div *ngFor="let i of dataFilter">
+                <div class="flex flex-col">
+                    <p>
+                        มาตรฐานที่ {{i.standard}}
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col">
+                        <div class="">
+                            <div class="py-4 inline-block min-w-full laptop:px-6 desktop:px-8">
+                                <div class="overflow-hidden">
+                                    <table class="min-w-full text-center">
+                                        <thead class="border-b bg-purple-cus">
+                                            <tr>
+                                                <th scope="col" colspan="3"
+                                                    class="text-sm text-start font-medium text-white px-6 py-4">
+                                                    ตัวบ่งชี้ที่ {{i.point}}</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col" rowspan="2"
+                                                    class="text-sm font-medium text-white px-6 py-4">
+                                                    สภาพที่พึงประสงค์
+                                                </th>
+                                                <th scope="col" colspan="2"
+                                                    class="text-sm font-medium text-white px-6 py-4">
+                                                    สภาพที่พึงประสงค์
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+                                                    ภาคเรียนที่ 1
+                                                </th>
+                                                <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+                                                    ภาคเรียนที่ 2
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-gray-200">
+                                            <tr class="border-b">
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                    {{i.desirableCondition.topic}}
+                                                </td>
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {{i.desirableCondition.termOne}}
+                                                </td>
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {{i.desirableCondition.termTwo}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>

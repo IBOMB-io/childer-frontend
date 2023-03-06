@@ -18,6 +18,9 @@ import { OverviewComponent } from './child-profile/overview/overview.component';
 import { EstimateComponent } from './child-profile/estimate/estimate.component';
 import { EvaluationComponent } from './child-profile/evaluation/evaluation.component';
 import { TabViewModule } from 'primeng/tabview';
+import {DropdownModule} from 'primeng/dropdown';
+import { AddEstimateComponent } from './child-profile/estimate/add-estimate/add-estimate.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,7 @@ import { TabViewModule } from 'primeng/tabview';
     OverviewComponent,
     EstimateComponent,
     EvaluationComponent,
+    AddEstimateComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,8 @@ import { TabViewModule } from 'primeng/tabview';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    TabViewModule
+    TabViewModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
