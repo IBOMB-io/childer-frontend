@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EstimateService } from './estimate.service';
 import { Estimate } from './estimate.model';
 import { ActivatedRoute } from '@angular/router';
@@ -15,6 +15,7 @@ import { DesirableCondition } from '../overview/desirable-condition.model';
 export class EstimateComponent implements OnInit {
 
   state: boolean = true;
+  btn!: boolean;
 
   formGroup!: FormGroup;
 
@@ -31,6 +32,7 @@ export class EstimateComponent implements OnInit {
   constructor(private service: EstimateService, private route: ActivatedRoute, private formBuider: FormBuilder, private overviewService: OverviewService) { };
 
   ngOnInit(): void {
+    this.btn = !localStorage.getItem("user") ? true : false;
     this.formGroup = this.formBuider.group({
       body: this.formBuider.array([]),
       emotional: this.formBuider.array([]),
@@ -43,7 +45,7 @@ export class EstimateComponent implements OnInit {
     console.table(this.desirableData);
   };
 
-  receiveState($event : any){
+  receiveState($event: any) {
     console.log($event);
     this.state = $event;
   }

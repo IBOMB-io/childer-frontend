@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { EstimateService } from '../estimate.service';
 import { Estimate } from '../estimate.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-estimate',
@@ -17,7 +18,7 @@ export class AddEstimateComponent implements OnInit {
 
   @Output() stateEvent = new EventEmitter<boolean>();
 
-  constructor(private formBuider: FormBuilder, private route: ActivatedRoute, private estimateService: EstimateService) { }
+  constructor(private formBuider: FormBuilder, private route: ActivatedRoute, private estimateService: EstimateService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.grade = Number(this.route.snapshot.paramMap.get('grade'));
@@ -54,7 +55,8 @@ export class AddEstimateComponent implements OnInit {
   save(data: any) {
     const postData: Estimate[] = [...data.ess];
     console.log(postData);
-    this.estimateService.saveEssForm(postData).forEach(() => window.location.reload());
+    postData.length > 1 ? this.estimateService.saveEssForm(postData).forEach(() => window.location.reload()) :
+     this.toastr.error("กรุณาตรวจสอบข้อมูลหรือกรอกช้อมูลให้ครบ", "ไม่สำเร็จ", { timeOut: 2000 });
   }
 
   get ess(): FormArray {

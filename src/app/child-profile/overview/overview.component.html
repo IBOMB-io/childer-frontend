@@ -1,20 +1,24 @@
 <div class="grid grid-cols-1 overflow-y-auto scrollbar-hide p-px h-500">
     <div *ngIf="selectedPage == undefined else page" class="grid grid-cols-2 gap-2 text-xl">
-        <div (click)="selectPage('ร่างกาย')" class="block h-52 p-6 border border-gray-200 rounded-lg shadow-md"
+        <div (click)="selectPage('ร่างกาย')"
+            class="flex justify-center p-16 text-center text-2xl border  border-gray-200 rounded-lg shadow-md"
             [ngClass]="body>0 ? bodyColor : 'bg-white hover:bg-gray-100'">
-            พัฒนาการด้านร่างกาย
+            พัฒนาการด้านร่างกาย<br>คะแนนเฉลี่ย {{bodyAvg}}
         </div>
-        <div (click)="selectPage('อารมณ์ จิตใจ')" class="block h-52 p-6 border border-gray-200 rounded-lg shadow-md"
+        <div (click)="selectPage('อารมณ์ จิตใจ')"
+            class="flex justify-center p-16 text-center text-2xl border border-gray-200 rounded-lg shadow-md"
             [ngClass]="emotional>0 ? emotionalColor : 'bg-white hover:bg-gray-100'">
-            พัฒนาการอารมณ์และจิตใจ
+            พัฒนาการอารมณ์และจิตใจ<br>คะแนนเฉลี่ย {{emoAvg}}
         </div>
-        <div (click)="selectPage('สังคม')" class="block h-52 p-6 border border-gray-200 rounded-lg shadow-md"
+        <div (click)="selectPage('สังคม')"
+            class="flex justify-center p-16 text-center text-2xl border border-gray-200 rounded-lg shadow-md"
             [ngClass]="society>0 ? societyColor : 'bg-white hover:bg-gray-100'">
-            พัฒนาการด้านสังคม
+            พัฒนาการด้านสังคม<br>คะแนนเฉลี่ย {{soAvg}}
         </div>
-        <div (click)="selectPage('สติปัญญา')" class="block h-52 p-6 border border-gray-200 rounded-lg shadow-md"
+        <div (click)="selectPage('สติปัญญา')"
+            class="flex justify-center p-16 text-center text-2xl border border-gray-200 rounded-lg shadow-md"
             [ngClass]="brain>0 ? brainColor : 'bg-white hover:bg-gray-100'">
-            พัฒนาการด้านสติปัญญา
+            พัฒนาการด้านสติปัญญา<br>คะแนนเฉลี่ย {{brainAvg}}
         </div>
     </div>
     <div>

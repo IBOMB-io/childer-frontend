@@ -48,14 +48,19 @@
                     </div>
                 </div>
             </div>
-            <div class="flex justify-end gap-2">
-                <button
-                    class="inline-flex justify-center rounded-md border bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-green-700"
-                    type="submit" (click)="state=false">เพิ่ม</button>
-                <button
-                    class="inline-flex justify-center rounded-md border bg-purple-cus px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-purple-900"
-                    (click)="save(formGroup.value)" type="submit">บันทึก</button>
+            <div *ngIf="btn else enable">
+
             </div>
+            <ng-template #enable>
+                <div class="flex justify-end gap-2">
+                    <button
+                        class="inline-flex justify-center rounded-md border bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-green-700"
+                        type="submit" (click)="state=false">เพิ่ม</button>
+                    <button
+                        class="inline-flex justify-center rounded-md border bg-purple-cus px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-purple-900"
+                        (click)="save(formGroup.value)" type="submit">บันทึก</button>
+                </div>
+            </ng-template>
         </div>
     </ng-template>
 </div>

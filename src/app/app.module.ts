@@ -20,6 +20,7 @@ import { EvaluationComponent } from './child-profile/evaluation/evaluation.compo
 import { TabViewModule } from 'primeng/tabview';
 import {DropdownModule} from 'primeng/dropdown';
 import { AddEstimateComponent } from './child-profile/estimate/add-estimate/add-estimate.component';
+import { SearchChildComponent } from './search-child/search-child.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AddEstimateComponent } from './child-profile/estimate/add-estimate/add-
     EstimateComponent,
     EvaluationComponent,
     AddEstimateComponent,
+    SearchChildComponent,
   ],
   imports: [
     BrowserModule,

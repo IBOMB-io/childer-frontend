@@ -14,12 +14,16 @@ export class OverviewComponent implements OnInit {
 
   body!: number;
   bodyColor!: string;
+  bodyAvg!: number;
   emotional!: number;
   emotionalColor!: string;
+  emoAvg!: number;
   society!: number;
   societyColor!: string;
+  soAvg!: number;
   brain!: number;
   brainColor!: string;
+  brainAvg!: number;
 
   constructor(private service: OverviewService, private route: ActivatedRoute) { }
 
@@ -60,11 +64,16 @@ export class OverviewComponent implements OnInit {
       this.emotionalColor = this.changeColor(this.emotional);
       this.societyColor = this.changeColor(this.society);
       this.brainColor = this.changeColor(this.brain);
+
+      this.bodyAvg = this.sumScore(body) / 2;
+      this.emoAvg = this.sumScore(emotional) / 2;
+      this.soAvg = this.sumScore(society) / 2;
+      this.brainAvg = this.sumScore(brain) / 2;
     });
   }
 
   interpolateScore(score: number, maxScore: number, dif: number): number {
-    return (score / dif) * maxScore
+    return (score / dif) * maxScore;
   }
 
   sumScore(score: DesirableCondition[]): number {
@@ -74,12 +83,12 @@ export class OverviewComponent implements OnInit {
   }
 
   changeColor(score: number): string {
-    if (score >= 3) {
+    if (score >= 2.5) {
       return 'bg-green-600 hover:bg-green-700 text-white';
-    } else if (score >= 2) {
+    } else if (score >= 1.5) {
       return 'bg-yellow-400 hover:bg-yellow-500 text-white';
     } else if (score >= 1) {
-      return 'bg-red-600 hover:bg-red-700 text-white'
+      return 'bg-red-600 hover:bg-red-700 text-white';
     } else {
       return 'bg-white hover:bg-gray-100';
     }

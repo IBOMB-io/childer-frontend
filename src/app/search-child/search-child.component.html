@@ -1,0 +1,23 @@
+<div class="fixed bg-bg-cus bg-cover w-full h-screen grid place-items-center">
+    <form (ngSubmit)="search()"
+        class="grid grid-cols-1 mb-16 laptop:grid-cols-3 laptop:w-5/12 place-items-center desktop:grid-cols-3">
+        <div
+            class="bg-purple-cus hidden w-full rounded-l-xl laptop:flex items-end laptop:col-span-1  laptop:h-96 desktop:col-span-1">
+            <img src="../../assets/Lovepik_com-401176518-cute-childrens-day-childrens-day 1.png" alt="">
+        </div>
+        <div
+            class="bg-white rounded-r-xl w-full p-10 grid gap-y-2 laptop:col-span-2 laptop:grid-cols-1 laptop:h-96 laptop:p-9 desktop:col-span-2">
+            <h1 class="text-center text-3xl font-bold col-span-2">ค้นหาข้อมูลเด็กนักเรียน</h1>
+            <div class="col-span-2">
+                <label for="username" class="block text-laptop font-medium text-gray-700">ชื่อ-นามสกุลเด็กนักเรียน</label>
+                <input type="text" autocomplete="name" name="fullname" [formControl]="fullname"
+                    class="mt-1 block w-full rounded-md border-gray-300 bg-gray-300  shadow-laptop focus:border-purple-cus focus:ring-puborder-purple-cus laptop:text-laptop">
+                <span *ngIf="fullname.invalid && fullname.touched" class="text-red-600">กรุณากรอกชื่อและนามสกุล</span>
+            </div>
+            <button type="submit"
+                class="col-span-2 group relative flex w-full h-12 justify-center rounded-md border border-transparent bg-purple-cus py-3 px-4 text-laptop font-medium text-white hover:bg-purple-cus focus:outline-none focus:ring-2 focus:ring-purple-cus focus:ring-offset-2">
+                ค้นหา
+            </button>
+        </div>
+    </form>
+</div>

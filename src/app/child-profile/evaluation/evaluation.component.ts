@@ -42,6 +42,7 @@ export class EvaluationComponent implements OnInit {
       this.emotional = this.tranformText(Math.ceil(this.interpolateScore(this.sumScore(emotional), res.length * 3)));
       this.society = this.tranformText(Math.ceil(this.interpolateScore(this.sumScore(society), res.length * 3)));
       this.brain = this.tranformText(Math.ceil(this.interpolateScore(this.sumScore(brain), res.length * 3)));
+      
     });
   }
 
